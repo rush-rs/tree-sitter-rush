@@ -11,7 +11,9 @@
 ; Function calls
 (call_expr
   func: (ident) @function.call)
-; TODO: builtin functions
+(call_expr
+  func: (ident) @function.builtin
+  (#any-of? @function.builtin "exit"))
 
 ; Literals
 [
