@@ -49,6 +49,7 @@ module.exports = grammar({
             ),
         parameter: $ =>
             seq(
+                optional('mut'),
                 field('name', $.ident),
                 ':',
                 field('type', $.type),
