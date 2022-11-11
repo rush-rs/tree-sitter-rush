@@ -68,6 +68,10 @@ module.exports = grammar({
             choice(
                 $.let_stmt,
                 $.return_stmt,
+                $.loop_stmt,
+                $.while_stmt,
+                $.break_stmt,
+                $.continue_stmt,
                 $.expr_stmt,
             ),
         let_stmt: $ =>
@@ -81,6 +85,11 @@ module.exports = grammar({
                 ';',
             ),
         return_stmt: $ => seq('return', optional(field('expr', $._expression)), ';'),
+        loop_stmt: $ => seq('loop', field('block', $.block), optional(';')),
+        while_stmt: $ =>
+            seq('while', field('cond', $._expression), field('block', $.block), optional(';')),
+        break_stmt: $ => seq('break', ';'),
+        continue_stmt: $ => seq('continue', ';'),
         expr_stmt: $ =>
             prec(
                 'stmt',

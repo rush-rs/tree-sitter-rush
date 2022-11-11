@@ -41,14 +41,14 @@
   "if"
 ] @conditional
 
-; [
-;   "break"
-;   "continue"
-;   "in"
-;   "loop"
-;   "while"
-;   "for"
-; ] @repeat
+[
+  "break"
+  "continue"
+  ; "in"
+  "loop"
+  "while"
+  ; "for"
+] @repeat
 
 ; Operators & Punctuation
 [

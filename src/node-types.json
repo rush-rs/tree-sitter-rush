@@ -202,6 +202,14 @@
         "required": false,
         "types": [
           {
+            "type": "break_stmt",
+            "named": true
+          },
+          {
+            "type": "continue_stmt",
+            "named": true
+          },
+          {
             "type": "expr_stmt",
             "named": true
           },
@@ -210,7 +218,15 @@
             "named": true
           },
           {
+            "type": "loop_stmt",
+            "named": true
+          },
+          {
             "type": "return_stmt",
+            "named": true
+          },
+          {
+            "type": "while_stmt",
             "named": true
           }
         ]
@@ -219,6 +235,11 @@
   },
   {
     "type": "bool",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "break_stmt",
     "named": true,
     "fields": {}
   },
@@ -366,6 +387,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "continue_stmt",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "expr_stmt",
@@ -894,6 +920,22 @@
     }
   },
   {
+    "type": "loop_stmt",
+    "named": true,
+    "fields": {
+      "block": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "parameter",
     "named": true,
     "fields": {
@@ -1008,6 +1050,10 @@
           "named": true
         },
         {
+          "type": "break_stmt",
+          "named": true
+        },
+        {
           "type": "call_expr",
           "named": true
         },
@@ -1017,6 +1063,10 @@
         },
         {
           "type": "char",
+          "named": true
+        },
+        {
+          "type": "continue_stmt",
           "named": true
         },
         {
@@ -1052,11 +1102,19 @@
           "named": true
         },
         {
+          "type": "loop_stmt",
+          "named": true
+        },
+        {
           "type": "prefix_expr",
           "named": true
         },
         {
           "type": "return_stmt",
+          "named": true
+        },
+        {
+          "type": "while_stmt",
           "named": true
         }
       ]
@@ -1143,6 +1201,84 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "while_stmt",
+    "named": true,
+    "fields": {
+      "block": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "cond": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "assign_expr",
+            "named": true
+          },
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "bool",
+            "named": true
+          },
+          {
+            "type": "call_expr",
+            "named": true
+          },
+          {
+            "type": "cast_expr",
+            "named": true
+          },
+          {
+            "type": "char",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
+            "type": "if_expr",
+            "named": true
+          },
+          {
+            "type": "infix_expr",
+            "named": true
+          },
+          {
+            "type": "int",
+            "named": true
+          },
+          {
+            "type": "prefix_expr",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1294,8 +1430,16 @@
     "named": true
   },
   {
+    "type": "break",
+    "named": false
+  },
+  {
     "type": "char",
     "named": true
+  },
+  {
+    "type": "continue",
+    "named": false
   },
   {
     "type": "else",
@@ -1334,6 +1478,10 @@
     "named": true
   },
   {
+    "type": "loop",
+    "named": false
+  },
+  {
     "type": "mut",
     "named": false
   },
@@ -1343,6 +1491,10 @@
   },
   {
     "type": "true",
+    "named": false
+  },
+  {
+    "type": "while",
     "named": false
   },
   {
