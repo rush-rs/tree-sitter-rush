@@ -28,15 +28,27 @@ module.exports = grammar({
             'expr',
             'stmt',
         ],
+        [
+            'item',
+            'stmt',
+        ],
     ],
 
     rules: {
         program: $ =>
             choice(
-                repeat($.function_definition),
+                repeat($._item),
                 seq(repeat($._statement), optional($._expression)),
             ),
 
+        _item: $ =>
+            prec(
+                'item',
+                choice(
+                    $.function_definition,
+                    $.let_stmt,
+                ),
+            ),
         function_definition: $ =>
             seq(
                 'fn',
@@ -65,15 +77,18 @@ module.exports = grammar({
         type: $ => choice($.ident, seq('(', ')')),
 
         _statement: $ =>
-            choice(
-                $.let_stmt,
-                $.return_stmt,
-                $.loop_stmt,
-                $.while_stmt,
-                $.for_stmt,
-                $.break_stmt,
-                $.continue_stmt,
-                $.expr_stmt,
+            prec(
+                'stmt',
+                choice(
+                    $.let_stmt,
+                    $.return_stmt,
+                    $.loop_stmt,
+                    $.while_stmt,
+                    $.for_stmt,
+                    $.break_stmt,
+                    $.continue_stmt,
+                    $.expr_stmt,
+                ),
             ),
         let_stmt: $ =>
             seq(

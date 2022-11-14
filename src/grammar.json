@@ -8,7 +8,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "function_definition"
+            "name": "_item"
           }
         },
         {
@@ -36,6 +36,23 @@
           ]
         }
       ]
+    },
+    "_item": {
+      "type": "PREC",
+      "value": "item",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "function_definition"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "let_stmt"
+          }
+        ]
+      }
     },
     "function_definition": {
       "type": "SEQ",
@@ -244,41 +261,45 @@
       ]
     },
     "_statement": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "let_stmt"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "return_stmt"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "loop_stmt"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "while_stmt"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "for_stmt"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "break_stmt"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "continue_stmt"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "expr_stmt"
-        }
-      ]
+      "type": "PREC",
+      "value": "stmt",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "let_stmt"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "return_stmt"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "loop_stmt"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "while_stmt"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "for_stmt"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "break_stmt"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "continue_stmt"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expr_stmt"
+          }
+        ]
+      }
     },
     "let_stmt": {
       "type": "SEQ",
@@ -2043,6 +2064,16 @@
       {
         "type": "STRING",
         "value": "expr"
+      },
+      {
+        "type": "STRING",
+        "value": "stmt"
+      }
+    ],
+    [
+      {
+        "type": "STRING",
+        "value": "item"
       },
       {
         "type": "STRING",
