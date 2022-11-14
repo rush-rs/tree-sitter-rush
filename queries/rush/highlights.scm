@@ -15,6 +15,10 @@
   func: (ident) @function.builtin
   (#any-of? @function.builtin "exit"))
 
+; for-loop variable
+(for_stmt
+  name: (ident) @parameter)
+
 ; Literals
 [
   (line_comment)
@@ -44,10 +48,9 @@
 [
   "break"
   "continue"
-  ; "in"
   "loop"
   "while"
-  ; "for"
+  "for"
 ] @repeat
 
 ; Operators & Punctuation

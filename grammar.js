@@ -70,6 +70,7 @@ module.exports = grammar({
                 $.return_stmt,
                 $.loop_stmt,
                 $.while_stmt,
+                $.for_stmt,
                 $.break_stmt,
                 $.continue_stmt,
                 $.expr_stmt,
@@ -88,6 +89,19 @@ module.exports = grammar({
         loop_stmt: $ => seq('loop', field('block', $.block), optional(';')),
         while_stmt: $ =>
             seq('while', field('cond', $._expression), field('block', $.block), optional(';')),
+        for_stmt: $ =>
+            seq(
+                'for',
+                field('name', $.ident),
+                '=',
+                field('initializer', $._expression),
+                ';',
+                field('cond', $._expression),
+                ';',
+                field('update', $._expression),
+                field('block', $.block),
+                optional(';'),
+            ),
         break_stmt: $ => seq('break', ';'),
         continue_stmt: $ => seq('continue', ';'),
         expr_stmt: $ =>
