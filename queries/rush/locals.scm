@@ -4,7 +4,7 @@
 (function_definition
   name: (ident) @local.definition.function)
 (parameter
-  name: (ident) @local.definition.var)
+  name: (ident) @local.definition.parameter)
 
 ; Variables
 (let_stmt
