@@ -6,7 +6,7 @@
 (function_definition
   name: (ident) @function)
 (parameter
-  name: (ident) @parameter)
+  name: (ident) @variable.parameter)
 
 ; Function calls
 (call_expr
@@ -23,7 +23,7 @@
 
 (bool) @boolean
 (int) @number
-(float) @float
+(float) @number.float
 (char) @character
 
 ; Keywords
@@ -39,7 +39,7 @@
 [
   "else"
   "if"
-] @conditional
+] @keyword.conditional
 
 [
   "break"
@@ -47,7 +47,7 @@
   "loop"
   "while"
   "for"
-] @repeat
+] @keyword.repeat
 
 ; Operators & Punctuation
 [
